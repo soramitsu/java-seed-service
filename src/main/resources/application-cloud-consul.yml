@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    consul:
+      enabled: true
+      config:
+        enabled: true
+      host: ${CONSUL_HOST:localhost}
+      port: ${CONSUL_PORT:8500}
+      discovery:
+        instanceId: ${spring.application.name}:${random.value}
+        healthCheckPath: /health
+        healthCheckInterval: 20s
+

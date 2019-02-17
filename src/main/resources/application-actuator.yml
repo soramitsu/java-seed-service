@@ -1,0 +1,19 @@
+# setup actuator in this profile
+management:
+  endpoints:
+    web:
+      exposure:
+        include: env,health,integrationgraph,metrics,caches,info
+  endpoint:
+    env:
+      enabled: true
+    health:
+      enabled: true
+    integrationgraph:
+      enabled: true
+    metrics:
+      enabled: true
+    caches:
+      enabled: true
+    info:
+      enabled: true

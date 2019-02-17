@@ -28,6 +28,3 @@ spring:
       settings:
         trace: false
         web-allow-others: false
-
-
-welcome: "Welcome from application-local-imnem.yml"

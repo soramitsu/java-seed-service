@@ -8,7 +8,12 @@ spring:
       enabled: false
     consul:
       enabled: false
-      confiig:
+      config:
         enabled: false
 
-welcome: "Welcome from application-local.yml"
+
+static:
+  welcome: "Hello"
+
+dynamic:
+  name: "Local User"

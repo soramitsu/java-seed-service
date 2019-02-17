@@ -1,1 +1,5 @@
-welcome: "Welcome from application-cloud.yml"
+static:
+  welcome: "Hello"
+
+dynamic:
+  name: "Cloud User"

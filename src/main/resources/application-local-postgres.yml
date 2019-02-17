@@ -11,6 +11,3 @@ spring:
       username: ${PG_USERNAME:postgres}
       password: ${PG_PASSWORD:postgres}
       driverClassName: org.postgresql.Driver
-
-
-welcome: "Welcome from application-local-postgres.yml"

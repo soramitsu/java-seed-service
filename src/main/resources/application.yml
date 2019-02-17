@@ -1,3 +1,6 @@
+server:
+  port: 8080
+
 spring:
   # define service name
   application:
@@ -6,8 +9,7 @@ spring:
   # define active profiles here
   profiles:
     active: local
+    include:
+      - actuator
 
-welcome: "Welcome from application.yml"
 
-server:
-  port: 8080
