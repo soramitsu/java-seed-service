@@ -1,0 +1,13 @@
+spring:
+  # define service name
+  application:
+    name: "example1"
+
+  # define active profiles here
+  profiles:
+    active: local
+
+welcome: "Welcome from application.yml"
+
+server:
+  port: 8080

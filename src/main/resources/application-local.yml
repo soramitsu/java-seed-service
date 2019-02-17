@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    include:
+      - local-inmem
+
+  cloud:
+    vault:
+      enabled: false
+    consul:
+      enabled: false
+      confiig:
+        enabled: false
+
+welcome: "Welcome from application-local.yml"

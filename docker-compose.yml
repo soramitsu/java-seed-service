@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+
+  postgres:
+    image: postgres:11-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+  consul:
+    image: consul:1.4.2
+    ports:
+      - "8500:8500"  # GUI
+      - "8600:8600"  # DNS
+    environment:
+      - CONSUL_BIND_INTERFACE=eth0
+    volumes:
+      - consul:/consul/data
+    command: consul agent -server -dev -ui -client 0.0.0.0
+
+  vault:
+    image: vault
+    ports:
+      - "8200:8200"
+    depends_on:
+      - consul
+    volumes:
+      - ./config/vault:/config:z
+      - ./config/vault/policies:/policies:z
+    cap_add:
+      - IPC_LOCK
+    entrypoint: vault server -config=/config/with-consul.hcl
+
+
+volumes:
+  vault:
+  consul:
