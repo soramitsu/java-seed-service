@@ -1,7 +1,6 @@
 package jp.co.soramitsu.seed;
 
-import jp.co.soramitsu.seed.properties.DynamicNameConfiguration;
-import jp.co.soramitsu.seed.properties.StaticWelcomeConfiguration;
+import jp.co.soramitsu.seed.properties.WelcomeProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class WelcomeController {
 
   private final Environment environment;
-  private final StaticWelcomeConfiguration staticWelcomeConfiguration;
-  private final DynamicNameConfiguration dynamicNameConfiguration;
+  private final WelcomeProperties welcomeProperties;
 
 
   @GetMapping("/")
@@ -22,8 +20,8 @@ public class WelcomeController {
 
     String welcome = String.format(
         "%s %s",
-        staticWelcomeConfiguration.getWelcome(),
-        dynamicNameConfiguration.getName()
+        welcomeProperties.getWelcome(),
+        welcomeProperties.getName()
     );
 
     return String.format(

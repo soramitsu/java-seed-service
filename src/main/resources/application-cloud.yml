@@ -1,5 +1,9 @@
-static:
+custom:
   welcome: "Hello"
-
-dynamic:
   name: "Cloud User"
+
+
+spring:
+  profiles:
+    include:
+      - cloud-consul
