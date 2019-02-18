@@ -3,12 +3,15 @@ version: '3'
 services:
 
   postgres:
+    env_file: .env
     image: postgres:11-alpine
     ports:
-      - 5432:5432
+      - ${POSTGRES_PORT}:5432
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_DATABASE: ${POSTGRES_DATABASE}
+      POSTGRES_SCHEMA: ${POSTGRES_SCHEMA}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
   consul:
     image: consul:1.4.2
@@ -17,24 +20,13 @@ services:
       - "8600:8600"  # DNS
     environment:
       - CONSUL_BIND_INTERFACE=eth0
-    volumes:
-      - consul:/consul/data
     command: consul agent -server -dev -ui -client 0.0.0.0
 
   vault:
     image: vault
     ports:
       - "8200:8200"
-    depends_on:
-      - consul
-    volumes:
-      - ./config/vault:/config:z
-      - ./config/vault/policies:/policies:z
     cap_add:
       - IPC_LOCK
-    entrypoint: vault server -config=/config/with-consul.hcl
+    entrypoint: vault server -dev -dev-root-token-id="custom-token-change-me" -dev-listen-address="0.0.0.0:8200"
 
-
-volumes:
-  vault:
-  consul:

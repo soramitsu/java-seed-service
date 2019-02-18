@@ -1,0 +1,14 @@
+## When started, spring starts 2 contexts. First one is boostrap config, second is application config.
+
+server:
+  port: 8080
+
+spring:
+  # define service name
+  application:
+    name: "example1"
+
+  # define active profiles here
+  # or with env var SPRING_PROFILES_ACTIVE=novault,local,actuator
+  profiles:
+    active: vault,cloud,actuator

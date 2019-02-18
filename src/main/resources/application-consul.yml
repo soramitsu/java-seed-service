@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    consul:
+      enabled: true
+      config:
+        enabled: true
+        fail-fast: true # fail fast if consul is not found
+        watch:
+          enabled: true # watch for config changes
+          delay: 1000
+      host: ${CONSUL_HOST:localhost}
+      port: ${CONSUL_PORT:8500}
+      discovery:
+        enabled: true
+        register: true
+        instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+        healthCheckPath: /actuator/health
+        healthCheckInterval: 20s
+        fail-fast: true
+
+
+# TODO: ACL

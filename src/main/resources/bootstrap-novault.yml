@@ -1,0 +1,5 @@
+# vault configuration MUST be in bootstrap file
+spring:
+  cloud:
+    vault:
+      enabled: false

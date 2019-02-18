@@ -1,9 +1,4 @@
-custom:
-  welcome: "Hello"
-  name: "Cloud User"
-
-
 spring:
   profiles:
     include:
-      - cloud-consul
+      - consul

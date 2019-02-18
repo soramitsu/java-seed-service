@@ -1,0 +1,21 @@
+db:
+  host: ${PG_HOST:localhost}
+  port: ${PG_PORT:5432}
+  database: ${PG_DB:postgres}
+  schema: ${PG_SCHEMA:public}
+  username: ${PG_USER:postgres}
+  password: ${PG_PASSWORD:postgres}
+
+spring:
+  jpa:
+    databasePlatform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+    properties:
+      hibernate:
+        default_schema: ${db.schema}
+    open-in-view: false
+    datasource:
+      url: jdbc:postgresql://${db.host}:${db.port}/${db.database}
+      username: ${db.username}
+      password: ${db.password}
+      driverClassName: org.postgresql.Driver

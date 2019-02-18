@@ -1,17 +1,4 @@
 spring:
   profiles:
-    include:
-      - local-inmem
+    active: local-inmem
 
-  cloud:
-    vault:
-      enabled: false
-    consul:
-      enabled: false
-      config:
-        enabled: false
-
-
-custom:
-  welcome: "Hello"
-  name: "Local User"
