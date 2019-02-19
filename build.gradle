@@ -1,6 +1,7 @@
 plugins {
     id 'org.springframework.boot' version '2.1.3.RELEASE'
     id 'java'
+    id 'application'
 }
 
 apply plugin: 'io.spring.dependency-management'
@@ -8,6 +9,7 @@ apply plugin: 'io.spring.dependency-management'
 group = 'jp.co.soramitsu'
 version = '123'
 sourceCompatibility = '1.8'
+mainClassName = 'jp.co.soramitsu.seed.SeedApplication'
 
 repositories {
     mavenCentral()
@@ -23,6 +25,8 @@ ext {
 dependencies {
     compileOnly("org.projectlombok:lombok:${lombokVersion}")
     testCompileOnly("org.projectlombok:lombok:${lombokVersion}")
+    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+    testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
 
     // main dependency for SPRING
     implementation 'org.springframework.boot:spring-boot-starter-web'

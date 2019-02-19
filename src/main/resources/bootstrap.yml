@@ -11,4 +11,4 @@ spring:
   # define active profiles here
   # or with env var SPRING_PROFILES_ACTIVE=novault,local,actuator
   profiles:
-    active: vault,cloud,actuator
+    active: local,novault,noconsul
